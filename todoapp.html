@@ -21,6 +21,9 @@
 	.input form input{
 		padding: 4px;
 	}
+	*{
+		box-sizing: border-box;
+	}
 	.div{
 	    width: 430px;
 	    height: 33px;
@@ -31,6 +34,7 @@
 	    border-radius: 4px;
 	    margin-bottom: 6px;
 	    position: relative;
+	    text-align: left;
 	}
 	.output{
 		margin-left: 30%;
@@ -48,6 +52,13 @@
 	    right: 10px;
 	    color: #ea0050;
 	}
+	.divinput{
+		position: absolute;
+	    top: 0;
+	    padding: 3px 140px 9px 0px;
+	    border: none; 
+     outline: none; 
+	}
 </style>
 </head>
 <body>
@@ -57,10 +68,10 @@
 			<h2 class="text-center text-info">TODO APP</h2>
 		</div>
 		<div class="input">
-			<form>
+			
 				<input id="inp" type="text" placeholder="What you want to do">
 				<button id="btn" type="button" class="btn btn-warning">Submit</button>
-			</form>
+			
 		</div>
 		<div id="output" class="output">
 			<!-- <input type="input" class="div"> -->
@@ -71,13 +82,13 @@
 <script type="text/javascript">
   var btn = document.getElementById('btn');
   var inp = document.getElementById('inp');
-  
+  i=0;
    btn.onclick= handle;
    function handle(event)
    {
    	 var input= document.createElement("div");
    	 input.setAttribute("class", "div");
-   	input.innerHTML = inp.value + `<span class=" fa fa-pencil edit"></span> <span class=" fa fa-trash-o trash"> </span>`;
+   	input.innerHTML = `<input class="divinput" type="text" value = ${inp.value} readonly="readonly" ></input> <span class=" fa fa-pencil edit"></span> <span class=" fa fa-trash-o trash"> </span>`;
    	var parent = document.getElementById("output");
    	parent.appendChild(input);
 
@@ -85,20 +96,38 @@
    	 // edit.setAttribute("class", "fa fa-pencil edit");
    	 // var innerparent = document.querySelector(".div");
    	 // innerparent.appendChild(edit);
+		var trash = document.getElementsByClassName("trash");
+		 console.log(trash);
+		 for( var i=0; i<trash.length; i++)
+		 {
+		 	trash[i].onclick= function(){
+		 		parent.removeChild(this.parentElement);
+		 		// var rm = this.parentElement;
+
+		 	}
+		 }
+
+
+		 var edit = document.getElementsByClassName("edit");
+		 for( var j=0; j< edit.length; j++)
+		 {
+		 	edit[j].onclick= function(e){
+		 	var ls=  document.getElementsByClassName("divinput");
+		 	
+		 	}
+		 }
+		 
+		 
    }
 
 
    
-   document.querySelector(".trash").addEventListener("click",function(event){
-   	alert("jks");
-   console.log(event);
-});
-
+  
 
    inp.addEventListener("keyup", function(event){
   	console.log(event);
   	event.preventDefault();
-  	if(event.key == 8 || event.which == 8)
+  	if(event.key == 13 || event.which == 13)
   	{
   	btn.onclick();
   	}
