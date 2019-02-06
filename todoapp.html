@@ -1,137 +1,238 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Todo</title>
-	 <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Gallery</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	 <!-- bootrap cdn -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- bootrap cdn ends-->
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Gallery</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- bootrap cdn -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- bootrap cdn ends-->
 
-<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<style type="text/css">
-	.input{
-		margin-top: 23px;
-	}
-	.input form input{
-		padding: 4px;
-	}
-	*{
-		box-sizing: border-box;
-	}
-	.div{
-	    width: 430px;
-	    height: 33px;
-	    line-height: 0;
-	    display: block;
-	    padding: 15px 8px;
-	    border: 1px solid green;
-	    border-radius: 4px;
-	    margin-bottom: 6px;
-	    position: relative;
-	    text-align: left;
-	}
-	.output{
-		margin-left: 30%;
-	}
-	.edit{
-		position: absolute;
-		top: 6px;
-       right: 28px;
-       color: #209ad2;
+	<style type="text/css">
+		.input {
+			margin-top: 23px;
+		}
 
-	}
-	.trash{
-	    position: absolute;
-	    top: 6px;
-	    right: 10px;
-	    color: #ea0050;
-	}
-	.divinput{
-		position: absolute;
-	    top: 0;
-	    padding: 3px 140px 9px 0px;
-	    border: none; 
-     outline: none; 
-	}
-</style>
+		.input input {
+			padding: 4px;
+	    outline: none;
+	    box-shadow: none;
+	    border: none;
+	    border-bottom: 1px solid green;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		.div {
+			/*width: 60%;*/
+			height: 33px;
+			line-height: 0;
+			display: block;
+			padding: 15px 8px;
+			border: 1px solid green;
+			border-radius: 4px;
+			margin-bottom: 6px;
+			position: relative;
+			text-align: left;
+			transition: 0.3s;
+		}
+		
+		.div input:focus{
+			text-decoration: line-through;
+		}
+
+		.output {
+			max-height: 580px;
+			overflow: auto;
+		}
+
+		.edit {
+			position: absolute;
+			top: 6px;
+			right: 28px;
+			color: #209ad2;
+
+		}
+
+		.trash {
+			position: absolute;
+			top: 6px;
+			right: 10px;
+			color: #ea0050;
+		}
+
+		.divinput {
+			position: absolute;
+		    top: 0;
+		    padding: 3px 140px 0px 0px;
+		    border: none;
+		    outline: none;
+		    line-height: 2;
+		}
+		.save{
+			position: absolute;
+		    top: 8px;
+		    right: 48px;
+		    color: #43acff;
+		}
+		.stored ol li{
+			margin-bottom: 5px;
+
+		}
+		.remove{
+			margin-left: 6px;
+		    background: black;
+		    color: white;
+		}
+	</style>
 </head>
+
 <body>
-<div class="main">
-	<div class="container-fluid">
-		<div class="row">
-			<h2 class="text-center text-info">TODO APP</h2>
-		</div>
-		<div class="input">
-			
-				<input id="inp" type="text" placeholder="What you want to do">
-				<button id="btn" type="button" class="btn btn-warning">Submit</button>
-			
-		</div>
-		<div id="output" class="output">
-			<!-- <input type="input" class="div"> -->
+	<div class="main">
+		<div class="container-fluid">
+			<div class="row">
+					<h2 class="text-center text-info">TODO APP</h2>
+				<div class="col-md-3">
+
+					<div class="input">
+						<input id="inp" type="text" placeholder="What you want to do">
+						<button id="btn" type="button" class="btn btn-primary">Add</button>
+						<button id="btn2" type="button" class="btn btn-info">Todos</button>
+					</div>
+				</div>
+
+				<div class="col-md-6">
+					<div id="output" class="output">
+						<!-- <input type="input" class="div"> -->
+					</div>
+				</div>
+				<div class="col-md-3">	
+					<div id="stored">
+				
+					</div>
+				</div>
+			</div>	
 		</div>
 	</div>
-</div>
 </body>
 <script type="text/javascript">
-  var btn = document.getElementById('btn');
-  var inp = document.getElementById('inp');
-  i=0;
-   btn.onclick= handle;
-   function handle(event)
-   {
-   	 var input= document.createElement("div");
-   	 input.setAttribute("class", "div");
-   	input.innerHTML = `<input class="divinput" type="text" value = ${inp.value} readonly="readonly" ></input> <span class=" fa fa-pencil edit"></span> <span class=" fa fa-trash-o trash"> </span>`;
-   	var parent = document.getElementById("output");
-   	parent.appendChild(input);
+	var btn = document.getElementById('btn');
+	var inp = document.getElementById('inp');
+	var ijk = 0;
+	btn.onclick = handle;
+	function handle(event) {
+		if(inp.value != "")
+		{
+		var input = document.createElement("div");
+		input.setAttribute("class", "div");
+		input.innerHTML = `<input class="divinput" type="text" value= "${inp.value}" ></input> <span class=" fa fa-pencil edit"></span> <span class=" fa fa-trash-o trash"> </span> <span class="fa fa-bookmark save"> </span>`;
+		// input.innerHTML = `<input class="divinput" type="text" value = ${inp.value} ></input> <span class=" fa fa-pencil edit"></span> <span class=" fa fa-trash-o trash"> </span>`;
+		var parent = document.getElementById("output");
+		parent.appendChild(input);
 
-   	 // var edit = document.createElement("span");
-   	 // edit.setAttribute("class", "fa fa-pencil edit");
-   	 // var innerparent = document.querySelector(".div");
-   	 // innerparent.appendChild(edit);
 		var trash = document.getElementsByClassName("trash");
-		 console.log(trash);
-		 for( var i=0; i<trash.length; i++)
-		 {
-		 	trash[i].onclick= function(){
-		 		parent.removeChild(this.parentElement);
-		 		// var rm = this.parentElement;
+		// console.log(trash);
+		for (var i = 0; i < trash.length; i++) {
+			trash[i].onclick = function () {
+				parent.removeChild(this.parentElement);
+				// var rm = this.parentElement;
 
-		 	}
-		 }
+			}
+		}
+
+		var editTag = document.getElementsByClassName("fa-pencil");
+		// console.log(editTag)
+			for (let j = 0; j < editTag.length; j++) {
+				editTag[j].addEventListener("click", function () {
+					document.getElementsByClassName("divinput")[j].value = document.getElementById("inp").value;
+				})
+			}
+
+			var saveIcon = document.getElementsByClassName("save");
+			  for(let k=0; k < saveIcon.length; k++){
+			  	saveIcon[k].addEventListener("click", add);
+			  
+			  } 
 
 
-		 var edit = document.getElementsByClassName("edit");
-		 for( var j=0; j< edit.length; j++)
-		 {
-		 	edit[j].onclick= function(e){
-		   document.getElementsByClassName("divinput");
+	    } else{
+	    	alert("Enter Task to add");
+	    }
+	 } 
 
-		 	}
-		 }
-		 
-		 
-   }
+	 document.getElementById("btn2").addEventListener("click", ()=>{
+	 	show();
+	 }) ;
+	inp.addEventListener("keyup", function (event) {
+		// console.log(event);
+		event.preventDefault();
+		if (event.key == 13 || event.which == 13) {
+			btn.onclick();
+		}
+	});
 
 
-   
-  
 
-   inp.addEventListener("keyup", function(event){
-  	console.log(event);
-  	event.preventDefault();
-  	if(event.key == 13 || event.which == 13)
-  	{
-  	btn.onclick();
-  	}
-  });
+function get_todos() {
+    var todos = new Array;
+    var todos_str = localStorage.getItem('todo');
+    if (todos_str !== null) {
+        todos = JSON.parse(todos_str); 
+    }
+    return todos;
+}
+ 
+function add(e) {
+    var task = document.getElementById('inp').value;
+    // var task = .value;
+ 
+    var todos = get_todos();
+    todos.push(task);
+    localStorage.setItem('todo', JSON.stringify(todos));
+ 
+    // show();
+ 
+    return false;
+}
+ 
+function remove() {
+    var id = this.getAttribute('id');
+    var todos = get_todos();
+    todos.splice(id, 1);
+    localStorage.setItem('todo', JSON.stringify(todos));
+ 
+    show();
+ 
+    return false;
+}
+ 
+function show() {
+    var todos = get_todos();
+ 
+    var html = '<ol>';
+    for(var i=0; i<todos.length; i++) {
+        html += '<li>' + todos[i] + '<button class="remove" id="' + i  + '">x</button></li>';
+    };
+    html += '</ol>';
+ 
+    document.getElementById('stored').innerHTML = html;
+ 
+    var buttons = document.getElementsByClassName('remove');
+    for (var i=0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', remove);
+    };
+}
+ 
 
 </script>
+
 </html>
