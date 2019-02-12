@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ToDo</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+    .input form input{
+      border: none;
+    border-bottom: 1px solid #bec5af;
+    outline: none;
+    }
+    .div {
+      width: 60%;
+      height: 33px;
+      line-height: 0;
+      display: block;
+      padding: 14px 8px 2px 8px;
+      border: 1px solid green;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      position: relative;
+      vertical-align: middle;
+      text-align: left;
+      transition: 0.3s;
+    }
+    #btn{
+      width: 67px;
+    }
+   #mytodo  #output{
+      width: 80% !important;
+      margin: 0 auto;
+
+    }
+    .delete{
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    color: #bd0d00;
+    }
+   .edit{
+    position: absolute;
+    top: 10px;
+    right: 18px;
+    color: #037fbb;
+   }
+  </style>
+</head>
+
+<body>
+
+<div class="container-fluid mynav">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Kammy</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Apps
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" onclick="handletodo()" href="#">Todo</a>
+          <a class="dropdown-item" href="#">Cloud</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Nowhere</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    
+  </div>
+</nav>
+</div>
+
+
+
+<div id="mytodo" style="display: none;" class="container-fluid">
+  <h3 class="text-center text-info">Todo App</h3>
+
+<div class="row">
+<div class="input col-md-3">
+	<form id="form" class="mt-4 ml-2">
+		<input type="text" id="inp" autocomplete="off" placeholder="Enter Your Task" />
+		<button class="btn btn-warning" type="button" id="update" style="display: none;">Update</button>
+		<button type="submit" class="btn btn-info" id="btn">Add</button>
+	</form>
+</div>
+
+
+<div id="output" class="col-md-9"> </div>
+ </div>
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+<script type="text/javascript">
+
+  function handletodo(){
+    document.getElementById('mytodo').style.display="block";
+  }
+	var btn = document.getElementById('btn');
+	var inp = document.getElementById('inp');
+	var update = document.getElementById('update');
+	var form = document.getElementById('form');
+	var todo = [];
+	var currentIndex;
+
+	function createTodo(){
+		var t = '';
+    for(var i in todo){
+      t+= `<div class="div">${todo[i]} <span ><i onclick=deleteItem("${i}") class="fa delete fa-trash-o" ></i></span> 
+       <span ><i onclick=editItem("${i}") class="fa edit fa-pencil" ></i></span> </div>`;
+
+    }
+    document.getElementById('output').innerHTML = t;
+	}
+  function show(elem){
+    elem.style.display="block";
+  }
+  function hide(elem){
+    elem.style.display= "none";
+  }
+  function deleteItem(index){
+    todo.splice(index, 1);
+    createTodo();
+  }
+  function editItem(index){
+    inp.value = todo[index];
+    currentIndex = index;
+    show(update);
+    hide(btn);
+  }
+  update.onclick=function(e){
+    todo[currentIndex] = inp.value;
+    createTodo();
+    hide(update);
+    show(btn);
+    inp.value = "";
+  }
+
+  btn.onclick = function(e){
+    e.preventDefault();
+    if(inp.value !== ""){
+    todo.push(inp.value);
+    createTodo();
+    inp.value = "";
+    inp.focus();
+    } else{
+      alert("Enter some task")
+    }
+  }
+	form.onsubmit = function(e)
+	{
+		console.log(e);
+		e.preventDefault();
+    if(inp.value !== ""){
+		todo.push(inp.value);
+		createTodo();
+		inp.value = "";
+		inp.focus();
+    }else{
+      alert("Enter some task")
+    }
+	}
+</script>
+</html>

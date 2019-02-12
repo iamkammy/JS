@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form id="frm">
+		<input type="text" id="inp" autocomplete="off" />
+		<button type="button" id="update" style="display: none;">Update</button>
+		<button type="submit" id="btn">Click</button>
+	</form>
+	<div id="main"></div>
+
+	<script type="text/javascript">
+		var btn = document.getElementById('btn');
+		var frm = document.getElementById('frm');
+		var update = document.getElementById('update');
+		var inp = document.getElementById('inp');
+		var todo = [];
+		var currentIndex;
+
+		function show(elem) {
+			elem.style.display = "block";
+		}
+
+		function hide(elem) {
+			elem.style.display = "none";
+		}
+
+		function createTodo() {
+			var p = '';
+			for (var i in todo) {
+				p += `<div>${todo[i]} <button class="delete" onclick=deleteItem("${i}")>Delete</button><button class="edit" onclick=editTodo("${i}")>Edit</button></div>`;
+			}
+			document.getElementById("main").innerHTML = p;
+		}
+
+		function deleteItem(index) {
+			todo.splice(index, 1);
+			createTodo();
+		}
+
+		function editTodo(index) {
+			inp.value = todo[index];
+			currentIndex = index;
+			show(update);
+			hide(btn);
+		}
+															
+		update.onclick = function() {
+			todo[currentIndex] = inp.value;
+			createTodo();
+		}
+
+		frm.onsubmit = function(e)  {
+			e.preventDefault();
+			console.log(e);
+			todo.push(inp.value);
+			createTodo();
+			inp.value = "";
+			inp.focus();
+		}
+	</script>
+</body>
+</html>
