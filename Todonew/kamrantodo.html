@@ -50,12 +50,18 @@
    background-color: white;
     color: #040404;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.4);
-    transform: translateY(8px);
+    transform: translateY(5px);
  }
  .modal .modal-body input{
   border:none;
   outline: none;
  }
+ .modal-body {
+    padding: 7px 9px;
+}
+.modal-footer{
+  padding: 8px 12px;
+}
  .carousel-item{
   width: 100%;
   height: 500px;
@@ -64,6 +70,112 @@
  .carousel-item img{
   width: 100%;
  }
+ #wconverter .card {
+  color: #eee;
+  transition: 0.4s;
+ }
+ #wconverter .card:hover{
+ box-shadow: 0 0 15px #324b56;
+    transform: translateX(10px);
+ }
+#wconverter #logo h1{
+  color: transparent;
+}
+h1.display-4.text-center.mb-3 {
+    color: white;
+}
+
+ /* First lets set a background */
+.bg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1431352832634-845fad190fbd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=ec80c41e488dc2b99ed543df2f3f0919');
+  background-position: center center;
+  background-origin: content-box;
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: -2;
+}
+
+/* Now the same background, but with brightness filters*/
+.lightning{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1431352832634-845fad190fbd?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=ec80c41e488dc2b99ed543df2f3f0919');
+  background-position: center center;
+  background-origin: content-box;
+  background-size: cover;
+  background-attachment: fixed;
+  -webkit-filter: brightness(3);
+  filter: brightness(3);
+  -o-filter: brightness(3);
+  -moz-filter: brightness(3);
+  z-index: -1;
+}
+
+/*Now just a opacity animation*/
+.flashit{
+-webkit-animation: flash ease-out 7s infinite;
+-moz-animation: flash ease-out 7s infinite;
+animation: flash ease-out 7s infinite;
+animation-delay: 2s;
+}
+
+@-webkit-keyframes flash {
+  from { opacity: 0; } 
+  92% { opacity: 0; }
+  93% { opacity: 0.6; }
+  94% { opacity: 0.2; }
+  96% { opacity: 0.9; } 
+  to { opacity: 0; }
+}
+
+@keyframes flash {
+  from { opacity: 0; } 
+    92% { opacity: 0; }
+  93% { opacity: 0.6; }
+    94% { opacity: 0.2; }
+    96% { opacity: 1; } 
+  to { opacity: 0; }
+}
+/*End! is that simple! */
+
+/*Now just some stupid logo to get some look and feel */
+#logo{
+  z-index:1000;
+  width: 100%;
+  font-size: 6rem;
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -18rem;
+  margin-top: -2rem;
+  font-weight: 900;
+}
+#logo span{ font-weight: 100;}
+
+html , body{
+  font-family: "Titillium Web", "lato" , sans-serif;
+}
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:200,900|Lato:100,300,900);
+
+@media screen and (max-width: 630px){
+  #logo{
+    font-size: 3rem;
+    margin-left: -9rem;
+    margin-top: -1rem;
+  }
+}
+
+
+
   </style>
 </head>
 
@@ -90,7 +202,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" onclick="handletodo()" href="#">Todo</a>
-          <a class="dropdown-item" href="#">Cloud<span class="badge badge-pill badge-warning ml-2">Pending</span></a>
+          <a class="dropdown-item" onclick="handlewc()" href="#">Weight Converter<span class="badge badge-pill badge-warning ml-2">Pending</span></a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Nowhere <span class="badge badge-pill badge-dark ml-2">Exclusive</span></a>
         </div>
@@ -179,6 +291,59 @@
 </div>
 
 
+
+<!-- weight converter -->
+    <div id="wconverter" class="container" style="display: none;" >
+      <div class="bg"></div>
+<div class="lightning flashit"></div>
+
+<!-- This is just a logo-->
+<div id="logo">
+  <h1>STORM<span>CLOUD</span></h1>
+</div>
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="display-4 text-center mb-3">Weight Converter</h1>
+          <form>
+            <div class="form-group">
+              <input type="number" id="weightinp" class=" form-control form-control-lg" placeholder="Enter Pounds...">
+            </div>
+          </form>
+          <div id="woutput">
+            <div class="card bg-primary mb-2">
+              <div class="card-block">
+                <h4 class="ml-3">Grams:</h4>
+                <div class="ml-3" id="gramsOutput">
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class="card bg-success mb-2">
+              <div class="card-block">
+                <h4 class="ml-3">Kilograms:</h4>
+                <div class="ml-3" id="kgOutput" >
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class="card bg-danger mb-2">
+              <div class="card-block">
+                <h4 class="ml-3">Ounces:</h4>
+                <div class="ml-3" id="ozOutput">
+                  
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- weight converter ends -->
+
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -195,7 +360,14 @@ $('#myModal').on('shown.bs.modal', function () {
   function handletodo(){
     hide(carosel);
     document.getElementById('mytodo').style.display="block";
+    document.getElementById('wconverter').style.display="none";
+
     show(searchform);
+  }
+function handlewc(){
+    hide(carosel);
+    document.getElementById('wconverter').style.display="block";
+     document.getElementById('mytodo').style.display="none";
   }
 
    $("#searchinput").on("keyup", function() {
@@ -318,5 +490,23 @@ console.log(e);
       // alert("Enter some task")
     }
 	}
+
+document.getElementById('woutput').style.display = "none";
+
+document.getElementById('weightinp').addEventListener('input', function(e){
+document.getElementById('woutput').style.display = "block";
+
+    let lbs = e.target.value;
+    document.getElementById('gramsOutput').innerHTML=  lbs/0.0022046;
+    document.getElementById('kgOutput').innerHTML=  lbs/2.2046;
+    document.getElementById('ozOutput').innerHTML=  lbs*16;
+    
+  });
+document.getElementById('weightinp').addEventListener('blur', function(e){
+  // alert("sds");
+  document.getElementById('woutput').style.display= "none";
+  e.target.value = "";
+ 
+});
 </script>
 </html>

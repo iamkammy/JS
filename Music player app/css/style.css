@@ -1,0 +1,64 @@
+body{
+	margin:  0;
+	padding: 0;
+	 box-sizing: border-box;
+	 background: #eee;
+}
+.audio-player{
+	width: 450px;
+	height: 300px;
+	background: #f3edbc;
+	box-shadow: 0 0 6px 2px #c7a8a8;
+	font-family: verdana;
+	font-size: 12px;
+	
+}
+.logo{
+	float: left;
+}
+.player{
+	float: right;
+	margin: 7px;
+}
+.songtitle{
+	width: 300px;
+	padding: 5px 0px 5px 0px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+.song-slider{
+	width: 300px;
+}
+.current-time{
+	float: left;
+	font-size: 10px;
+}
+.duration{
+	float: right;
+	font-size: 10px;
+
+}
+.duration{
+	float:right;
+	font-size: 10px;
+}
+
+.controllers{
+	clear: both;
+	display: table;
+}
+
+.controllers *{
+	vertical-align: middle;
+	margin-right: 2px;
+}
+
+.volume-slider{
+	width: 90px;
+	margin-left:5px;
+}
+.controllers i{
+	padding-left: 5px;
+	font-size: 14px;
+}
