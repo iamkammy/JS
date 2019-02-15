@@ -5,20 +5,44 @@ body{
 	 background: #eee;
 }
 .audio-player{
-	width: 450px;
-	height: 300px;
-	background: #f3edbc;
-	box-shadow: 0 0 6px 2px #c7a8a8;
+	/*width: 450px;*/
+	/*height: 300px;*/
+	background: #a7ccde;
 	font-family: verdana;
 	font-size: 12px;
 	
 }
+.div{
+	width: 115%;
+    color: white;
+    border-radius: 5px;
+    background: #b97272;
+    transition: 0.4s;
+}
+.div i{
+	color: #203844;
+    float: right;
+    margin-top: 4px;
+    margin-right: 9px;
+}
+.div:hover{
+	    background: #6b5e5e;
+    color: white;
+    transform: translate(10px);
+    /*transform: scale(1.2);*/
+}
 .logo{
-	float: left;
+	width: 50%;
+    margin: 0 auto;
+}
+.logo img{
+	width: 49%;
+    border-radius: 50%;
 }
 .player{
-	float: right;
 	margin: 7px;
+	width: 60%;
+    margin: 0 auto;
 }
 .songtitle{
 	width: 300px;
@@ -29,6 +53,10 @@ body{
 }
 .song-slider{
 	width: 300px;
+}
+.timer {
+    width: 300px;
+    clear: both;
 }
 .current-time{
 	float: left;
@@ -48,7 +76,9 @@ body{
 	clear: both;
 	display: table;
 }
-
+.controllers .vol{
+	margin-left: 40px;
+}
 .controllers *{
 	vertical-align: middle;
 	margin-right: 2px;
