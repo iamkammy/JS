@@ -26,26 +26,29 @@ var uploadbutton = document.getElementById('uploadbutton');
 	// 	var filename = target.files[0].name;
 	// }
 
-// var $audio = $('#myAudio');
-// $('input').on('change', function(e) {
-//   var target = e.currentTarget;
-//   var file = target.files[0];
-//   console.log(file.name);
-//   songs.push(file.name);
-//   console.dir(songs);
-//   var reader = new FileReader();
-  
-//   console.log($audio[0]);
-//    if (target.files && file) {
-//         var reader = new FileReader();
-//         reader.onload = function (e) {
-//         	// console.log(e.target.result);
-//             $audio.attr('src', e.target.result);
-//             $audio.play();
-//         }
-//         reader.readAsDataURL(file);
-//     }
-// });
+$('#fileupload').on('change', function(e) {
+  var target = e.currentTarget;
+  var file = target.files[0];
+  var reader = new FileReader();  
+  if (target.files && file) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+     //    songs.push(e.target.result);
+    	// console.log(songs.length);
+     //    currentSong = songs.length;
+     //    loadSong(true);
+        var song = new Audio();
+        song.src = e.target.result;
+        song.playbackRate = 1;
+		song.volume = volumeSlider.value;
+		song.play();
+		setTimeout(showDuration, 1000);
+        song.play();
+         
+    }
+    reader.readAsDataURL(file);
+  }
+});
 
 
 document.getElementById('listbtn').addEventListener("click", function(e){
@@ -80,9 +83,9 @@ var currentSong = 0;
 // window.onload = loadSong;
  var playbutton=document.getElementById('btn1');
 playbutton.onclick = loadSong;
-function loadSong(){
+function loadSong(isDynamic=false){
 	// alert("hdsj");
-	song.src = "songs/" + songs[currentSong];
+	song.src = (isDynamic) ? "songs/" + songs[currentSong] : songs[currentSong];
 	console.log(songTitle);
 	console.log("src="+ song.src);
 	songTitle.textContent = (currentSong +1) +". "+ songs[currentSong];
