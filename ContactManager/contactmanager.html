@@ -2,8 +2,54 @@
 <html>
 <head>
 	<title>Contact</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+<h2>Contact List</h2>
+<div class="inputs">
+<input type="text" placeholder="Enter Name"><br>
+<input type="email" placeholder="Enter email"><br>
+<input type="number" placeholder="Enter phone no"><br>
+<input id="addr" type="text" placeholder="Enter address"><br>
+<button id="btn1" type="button">Save	</button>
+</div>
 
+<div id="output">
+	
+</div>
 </body>
+<script type="text/javascript">
+ var name =document.querySelector("input[type=text]");
+ var email =document.querySelector("input[type=email]");
+ var phone =document.querySelector("input[type=number]");
+ var address =document.querySelector("#addr");
+ var button  = document.querySelector("#btn1");
+
+var contacts = [];
+
+ button.addEventListener("click", function(){
+ 	var name =document.querySelector("input[type=text]");
+ var email =document.querySelector("input[type=email]");
+ var phone =document.querySelector("input[type=number]");
+ var address =document.querySelector("#addr");
+
+ 	console.log(name.value);
+ 	var obj = { 
+ 		name:name.value,
+ 		email : email.value,
+ 		phone : phone.value,
+ 		address: function(){
+ 			return this.name +":"+address.value+ "->" +this.phone;  
+ 		}
+ 	}
+ 	contacts.push(obj);
+ 	console.log(contacts);
+let p ='';
+ 	for(var i=0; i<contacts.length; i++){
+ 		
+ 		p+= `<div class="div">${contacts[i].name} ${contacts[i].email} ${contacts[i].phone} ${contacts[i].name} ${contacts[i].address} </div>`
+ 	}
+document.getElementById('output').innerHTML= p;
+ });
+</script>
 </html>
