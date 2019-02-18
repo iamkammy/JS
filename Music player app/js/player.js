@@ -6,7 +6,6 @@ var songs = ["Breaking20The20Habit20Official20Video20-20Linkin20Park-v2H4l9RpkwM
 			"Somewhere20I20Belong20Official20Video20-20Linkin20Park-zsCD5XCu6CM.mp3"];
 
 
-
 var songTitle = document.getElementById('songTitle');
 var songSlider = document.getElementById('songSlider');
 var currentTime = document.getElementById('currentTime');
@@ -23,7 +22,7 @@ var uploadbutton = document.getElementById('uploadbutton');
 	// 	// val = val.split('-');
 	// 	// console.log(val);
 	// 	var target = e.currentTarget;
-	// 	var filename = target.files[0].name;
+	// 	var filename = target.files[0].name;hand
 	// }
 
 $('#fileupload').on('change', function(e) {
@@ -60,7 +59,7 @@ document.getElementById('listbtn').addEventListener("click", function(e){
 })
 
 function handle(t){
-	alert("sdsd");
+	// alert("sdsd");
 	console.log(t.innerHTML);
 	var x = t.innerHTML;
 	x = x.split('<');
@@ -68,7 +67,7 @@ function handle(t){
 
 	song.src = "songs/" + x[0];
 	console.log(songTitle);
-	songTitle.textContent = x[0]
+	songTitle.textContent = x[0];
 	nextSongTitle.innerHTML = "<b>Next Song: </b>" + songs[currentSong + 1 % songs.length];
 	song.playbackRate = 1;
 	song.volume = volumeSlider.value;
@@ -83,9 +82,9 @@ var currentSong = 0;
 // window.onload = loadSong;
  var playbutton=document.getElementById('btn1');
 playbutton.onclick = loadSong;
-function loadSong(isDynamic=false){
+function loadSong(){
 	// alert("hdsj");
-	song.src = (isDynamic) ? "songs/" + songs[currentSong] : songs[currentSong];
+	song.src = "songs/" + songs[currentSong];
 	console.log(songTitle);
 	console.log("src="+ song.src);
 	songTitle.textContent = (currentSong +1) +". "+ songs[currentSong];
@@ -119,7 +118,7 @@ function showDuration(){
 }
 function playOrPauseSong(img){
 	song.playbackRate = 1;
-
+	
 	if(song.paused){
 		song.play();
 			img.classList.remove('fa-play');
@@ -137,22 +136,27 @@ function next(){
 currentSong = currentSong + 1 % songs.length;
 loadSong(); 
 }
+
 function previous(){
 	currentSong--;
 	currentSong = (currentSong < 0) ? songs.length - 1 : currentSong;
 	loadSong();
 }
+
 function seekSong(){
 	song.currentTime = songSlider.value;
 	currentTime.textContent = convertTime(song.currentTime);
 }
+
 function adjustVolume(){
 	song.volume = volumeSlider.value;
 }
+
 function increasePlaybackRate(){
 	song.playbackRate +=0.5;
 	// console.log(songs.playbackRate);
 }
+
 function decreasePlaybackRate(){
 	song.playbackRate -=0.5;
 }

@@ -2,54 +2,183 @@
 <html>
 <head>
 	<title>Contact</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<h2>Contact List</h2>
-<div class="inputs">
-<input type="text" placeholder="Enter Name"><br>
-<input type="email" placeholder="Enter email"><br>
-<input type="number" placeholder="Enter phone no"><br>
-<input id="addr" type="text" placeholder="Enter address"><br>
-<button id="btn1" type="button">Save	</button>
+<!-- <h2>Contact Manager</h2>
+	<div class="inputs">
+	<input type="text" placeholder="Enter Name"><br>
+	<input type="email" placeholder="Enter email"><br>
+	<input type="number" placeholder="Enter phone no"><br>
+	<input id="addr" type="text" placeholder="Enter address"><br>
+	<button id="btn1" type="button">Save	</button>
+	</div> -->
+
+<div class="container-fluid mt-4">
+		<h2 class="text-center text-info">Contact Manager</h2>
+	<div class="row">
+		<div class="col-md-5 ml-4 mt-2">
+			<h5 class="text-center text-danger">Fill the details</h5>
+			<form id="cform" required="">
+				<div class="form-group">
+				  <input type="text" class="form-control"  placeholder="Enter Your Name">
+				</div>
+				<div class="form-group">
+					<input type="email" class="form-control"   placeholder="Enter Your Mail Id">
+				  </div>
+				  <div class="form-group">
+					<input type="number" class="form-control"  placeholder="Enter Phone No">
+				  </div>
+				  <div class="form-group">
+						<input type="date" class="form-control"  placeholder="Enter Date of Birth">
+					  </div>
+
+				  <div class="form-group">
+					 <textarea class="form-control" rows="3" placeholder="Enter your Address"></textarea>
+				  </div>
+				  
+
+				  <div class="form-group">
+						<label for="exampleFormControlSelect1">Category</label>
+						<select class="form-control" id="category">
+						  <option>Employee</option>
+						  <option>Student</option>
+						  <option>Professional</option>
+						  <option>AstroPhysicist</option>
+						  <option>Engineer</option>
+						</select>
+					  </div>
+				
+				<button type="button" id="btn1" class="btn btn-primary">Save Details</button>
+			  </form>
+		</div>
+		<div class="col-md-6 mt-4" id="output">
+	
+		</div>
+	</div>
 </div>
 
-<div id="output">
-	
+<!-- modal area -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Phone:</label>
+            <input type="number" class="form-control" id="recipient-phone">
+		  </div>
+		  <div class="form-group">
+				<label for="recipient-name" class="col-form-label">DOB:</label>
+				<input type="text" class="form-control" id="recipient-dob">
+			  </div>
+			  <div class="form-group">
+					<label for="recipient-name" class="col-form-label">Address:</label>
+					<textarea class="form-control" id="message-text"></textarea>
+				  </div>
+		  
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Category:</label>
+			<input type="text" class="form-control" id="recipient-category">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
 </div>
+<!-- modal ends -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
 </body>
 <script type="text/javascript">
- var name =document.querySelector("input[type=text]");
- var email =document.querySelector("input[type=email]");
- var phone =document.querySelector("input[type=number]");
- var address =document.querySelector("#addr");
- var button  = document.querySelector("#btn1");
+ function modalshow(index){
+	console.log(contacts[index]);
+	document.getElementById('exampleModalLabel').textContent = `Details of ${contacts[index].name}`;
+	document.getElementById('recipient-phone').value = contacts[index].phone;
+	
+	document.getElementById('recipient-dob').value =contacts[index].dob;
+
+	document.getElementById('message-text').textContent = contacts[index].address;
+	document.getElementById('recipient-category').value = contacts[index].category;
+	
+}
+function trash(index){
+
+}
+
+
 
 var contacts = [];
+ document.addEventListener("DOMContentLoaded", function() {
+   var name = document.querySelector("input[type=text]");
+   var email = document.querySelector("input[type=email]");
+   var phone = document.querySelector("input[type=number]");
+   var dob = document.querySelector("input[type=date]");
+   var address = document.querySelector("textarea");
+   var category = document.getElementById('category');
+   var button = document.getElementById("btn1");
 
- button.addEventListener("click", function(){
- 	var name =document.querySelector("input[type=text]");
- var email =document.querySelector("input[type=email]");
- var phone =document.querySelector("input[type=number]");
- var address =document.querySelector("#addr");
 
+
+button.addEventListener("click", function(){
+ 	
  	console.log(name.value);
  	var obj = { 
- 		name:name.value,
+ 		name:   name.value,
  		email : email.value,
  		phone : phone.value,
- 		address: function(){
- 			return this.name +":"+address.value+ "->" +this.phone;  
- 		}
+		dob: dob.value,
+ 		address: address.value,
+		category: category.value
  	}
+
  	contacts.push(obj);
  	console.log(contacts);
-let p ='';
- 	for(var i=0; i<contacts.length; i++){
- 		
- 		p+= `<div class="div">${contacts[i].name} ${contacts[i].email} ${contacts[i].phone} ${contacts[i].name} ${contacts[i].address} </div>`
- 	}
-document.getElementById('output').innerHTML= p;
+	console.log(obj);
+	 createBlock();
+
+	
+
  });
+ 
+
+function createBlock(){
+	let p ='';
+	for(var i in contacts){
+ 		
+		 p+= `<div class="div"> 
+			  <strong class="text-left text-info">Name : </strong>${contacts[i].name}
+			  <strong class="text-center ml-4 text-info">Email : </strong><a href="#">${contacts[i].email} </a>
+			  <abbr title="Click to show Full Info"><i onclick=modalshow("${i}") class="fa fa-user-o" data-toggle="modal" data-target="#exampleModal"></i></abbr>  
+			  
+			   <i class="fa fa-trash-o" onclick=trash("${i}") aria-hidden="true"></i>
+			  </div>`
+		   }
+	  document.getElementById('output').innerHTML= p;
+}
+function trash(index){
+	contacts.splice(index,1);
+	createBlock();
+}
+
+
+
+  });
 </script>
 </html>

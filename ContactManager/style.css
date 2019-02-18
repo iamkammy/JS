@@ -1,3 +1,33 @@
 body{
-	background: orange;
+	/* background: linear-gradient(to right, rgb(63, 172, 181), #607D8B); */
+}
+.output{
+	height: 200px;
+	border:1px solid red;
+	overflow: auto !important;
+}
+.div {
+    width: 92%;
+    background: linear-gradient(-90deg, #1c7098, #272726);
+    color: #dedede;
+    border-radius: 4px;
+	padding: 5px;
+	margin: 0px 0px 10px 0px;
+	position: relative;
+}
+.div>a{
+	text-decoration: none;
+	color: #dedede;
+}
+.div .fa-user-o{
+	color: white;
+    position: absolute;
+    top: 9px;
+    right: 33px;
+}
+.div .fa-trash-o{
+	color: #ff0057;
+    position: absolute;
+    top: 9px;
+    right: 10px;
 }

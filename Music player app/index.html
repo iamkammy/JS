@@ -16,8 +16,9 @@
 	<div class="logo text-center">
 		<img src="https://store-images.s-microsoft.com/image/apps.38393.13510798887044192.f07f5c60-5c57-41c4-905e-fe2d2a32bf7e.dc44ee5b-26f0-4baa-a84d-c9e184834dde?mode=scale&q=90&h=200&w=200&background=%230078D7">
 	</div>
-	<button type="button" id="btn1">Play</button>
-	<input type="file" accept="mp3" id="fileupload" />
+	<button class="btn btn-primary" type="button" id="btn1">Play</button>
+
+	<!-- <input type="file" accept="mp3" id="fileupload" /> -->
 
 
 	<!-- file upload section -->
@@ -67,10 +68,10 @@
 	</div>
 	</div>
 
-	<div class="col-md-6">
+	<div class="col-md-6 dropdown">
 					<!-- list section -->
-			<button type="button" id="listbtn">List</button>
-			<section id="listsec">
+			<button class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="button" id="listbtn">My Songs</button>
+			<section id="listsec" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				
 			</section>
 			<!-- list section ends -->

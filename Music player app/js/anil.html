@@ -1,0 +1,102 @@
+<html>
+<body> 
+<h1 style="text-align: center"> REGISTRATION FORM </h1>	
+<div style="text-align: center; border:1px solid black;">
+	 <form name="RegForm" action="" onsubmit="return GEEKFORGEEKS()" method="post"> 
+		
+		<p>Name: <input type="text" size=45 name="Name" id="name"> </p><br>	 
+		<p> Address: <input type="text" size=45 name="Address" id="address"> </p><br> 
+		<p>E-mail Address: <input type="text" size=45 name="EMail" id="email"> </p><br> 
+		<p>Password: <input type="text" size=45 name="Password" id="password"> </p><br> 
+		<p>Telephone: <input type="text" size=45 name="Telephone" id="phone"> </p><br> 
+			
+		<p>SELECT YOUR COURSE 
+			<select type="text" value="" name="Subject" id="course">
+			    <option>Select</option>  
+				<option>BTECH</option> 
+				<option>BBA</option> 
+				<option>BCA</option> 
+				<option>B.COM</option> 
+				<option>GEEKFORGEEKS</option> 
+			</select></p><br><br> 
+		<p>Comments: <textarea cols="45" name="Comment"> </textarea></p> 
+		<p><input type="submit" value="send" name="Submit" onclick="getvalue()">	 
+			<input type="reset" value="Reset" name="Reset"> 
+		</p>		 
+	 </form>
+</div>	 
+ 
+</body>
+<script> 
+function GEEKFORGEEKS() {  
+	var name = document.forms["RegForm"]["Name"];			 
+	var email = document.forms["RegForm"]["EMail"]; 
+	var phone = document.forms["RegForm"]["Telephone"]; 
+	var what = document.forms["RegForm"]["Subject"]; 
+	var password = document.forms["RegForm"]["Password"]; 
+	var address = document.forms["RegForm"]["Address"]; 
+	if (name.value == "")								 
+	{ 
+		window.alert("Please enter your name."); 
+		name.focus(); 
+		return false; 
+	} 
+	if (address.value == "")							 
+	{ 
+		window.alert("Please enter your address."); 
+		name.focus(); 
+		return false; 
+	} 
+	
+	if (email.value == "")								 
+	{ 
+		window.alert("Please enter a valid e-mail address."); 
+		email.focus(); 
+		return false; 
+	} 
+	if (email.value.indexOf("@", 0) < 0)				 
+	{ 
+		window.alert("Please enter a valid e-mail address.1"); 
+		email.focus(); 
+		return false; 
+	} 
+	if (email.value.indexOf(".", 0) < 0)				 
+	{ 
+		window.alert("Please enter a valid e-mail address.2"); 
+		email.focus(); 
+		return false; 
+	} 
+	if (phone.value == "")						 
+	{ 
+		window.alert("Please enter your telephone number."); 
+		phone.focus(); 
+		return false; 
+	} 
+	if (password.value == "")					 
+	{ 
+		window.alert("Please enter your password"); 
+		password.focus(); 
+		return flase; 
+	} 
+	if (what.selectedIndex < 1)				 
+	{ 
+		alert("Please enter your course."); 
+		what.focus(); 
+		return false; 
+	} 
+	return true; 
+}
+function getvalue(){
+	var name1=document.getElementById("name").value;
+	var address = document.getElementById("address").value;	 
+	var email=document.getElementById("email").value;
+	var password = document.getElementById("password").value;	
+	var moblie = document.getElementById("phone").value; 
+	var course = document.getElementById("course").value;
+	window.alert("name: "+name1+"\n address: "+address+"\n email: "
+		+email+"\n password: "+password+"\n moblie: "+moblie+"\n course: "+course);
+}
+</script> 
+
+
+</html>
