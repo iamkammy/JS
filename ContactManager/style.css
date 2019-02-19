@@ -1,10 +1,10 @@
 body{
 	/* background: linear-gradient(to right, rgb(63, 172, 181), #607D8B); */
 }
-.output{
-	height: 200px;
-	border:1px solid red;
-	overflow: auto !important;
+#output{
+	height: 457px;
+    box-sizing: border-box;
+    overflow: auto !important;
 }
 .div {
     width: 92%;
@@ -30,4 +30,25 @@ body{
     position: absolute;
     top: 9px;
     right: 10px;
+}
+.kk-4{
+	margin-top: 2.5rem!important;
+}
+.modal-body form #modal-address-open{
+	position: relative;
+}
+.modal-body form .fa-pencil{
+	position: absolute;
+    top: 43%;
+    right: 5px;
+}
+ .col-md-1 #dropdownMenuLink{
+	position: absolute;
+    transform: translate3d(-5px, 38px, 0px);
+    top: 0px;
+    left: -58px;
+    will-change: transform;
+}
+#dropdownMenuLink{
+	background: linear-gradient(90deg, #4ebbec, #af2d59) !important;
 }

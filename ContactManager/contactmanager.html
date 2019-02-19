@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Contact</title>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -19,8 +20,8 @@
 <div class="container-fluid mt-4">
 		<h2 class="text-center text-info">Contact Manager</h2>
 	<div class="row">
-		<div class="col-md-5 ml-4 mt-2">
-			<h5 class="text-center text-danger">Fill the details</h5>
+		<div class="col-md-5  mt-2">
+			<h5 class="text-center text-danger">Fill all the details</h5>
 			<form id="cform" required="">
 				<div class="form-group">
 				  <input type="text" class="form-control"  placeholder="Enter Your Name">
@@ -54,11 +55,29 @@
 				<button type="button" id="btn1" class="btn btn-primary">Save Details</button>
 			  </form>
 		</div>
-		<div class="col-md-6 mt-4" id="output">
-	
+		<div class="col-md-6  kk-4" id="output">
+		
+		</div>
+		<div class="col-md-1">
+						<div class="dropdown show" style="display:none" id="filter-div">
+							<a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Filter
+							</a>
+						
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+								<a class="dropdown-item" onclick="myFilter(this)" href="#">Employee</a>
+								<a class="dropdown-item" onclick="myFilter(this)" href="#">Student</a>
+								<a class="dropdown-item" onclick="myFilter(this)" href="#">Professional</a>
+								<a class="dropdown-item" onclick="myFilter(this)" href="#">AstroPhysicist</a>
+								<a class="dropdown-item" onclick="myFilter(this)" href="#">Engineer</a>
+							</div>
+						</div>
 		</div>
 	</div>
 </div>
+
+
+
 
 <!-- modal area -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -80,9 +99,10 @@
 				<label for="recipient-name" class="col-form-label">DOB:</label>
 				<input type="text" class="form-control" id="recipient-dob">
 			  </div>
-			  <div class="form-group">
+			  <div class="form-group" id="modal-address-open">
 					<label for="recipient-name" class="col-form-label">Address:</label>
-					<textarea class="form-control" id="message-text"></textarea>
+					<textarea class="form-control" id="message-text" onblur="addrblur(this)" readonly="true"></textarea>
+					<i class="fa fa-pencil" onclick="edit(this)" ></i>
 				  </div>
 		  
           <div class="form-group">
@@ -93,7 +113,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button type="button" class="btn btn-success" onclick="savealert()">Save</button>
       </div>
     </div>
   </div>
@@ -109,7 +129,7 @@
 <script type="text/javascript">
  function modalshow(index){
 	console.log(contacts[index]);
-	document.getElementById('exampleModalLabel').textContent = `Details of ${contacts[index].name}`;
+	document.getElementById('exampleModalLabel').textContent = `Details of : ${contacts[index].name}`;
 	document.getElementById('recipient-phone').value = contacts[index].phone;
 	
 	document.getElementById('recipient-dob').value =contacts[index].dob;
@@ -118,13 +138,88 @@
 	document.getElementById('recipient-category').value = contacts[index].category;
 	
 }
-function trash(index){
+function myFilter(txt){
+	
+	var text = txt.textContent.toLowerCase();
+	const filterItems = function(text) {
+  return contacts.filter(function(e1){
+	return	el.toLowerCase().indexOf(text.toLowerCase()) > -1;
+	}
+	)}
+	console.log(filterItems(text));
+}
 
+function savealert(){
+	swal({
+  title: "Cool",
+  text: "Your Data saved Successfully",
+	icon: "success"
+   });
+}
+function trash(index){
+	swal({
+  title: "Are you sure?",
+  text: `Once deleted, you will not be able to recover ${contacts[index].name}  info!`,
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+    contacts.splice(index,1);
+		createBlock();
+    swal(`Poof! ${contacts[index].name} info has been deleted!`, {
+      icon: "success",
+    });
+  } else {
+    swal(`${contacts[index].name} info is safe!`);
+  }
+});
+	
+// document.getElementsByClassName("div")[index].style.display="none";
+}
+function edit(e){
+	console.log(e.parentNode.children[1]);
+	e.parentNode.children[1].removeAttribute("readonly");
+	// setTimeout(addrblur(e), 8000);
+}
+
+function addrblur(e){
+	console.log("blur occured");
+  e.setAttribute("readonly", "true");
+}
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
 }
 
 
+function createBlock(){
+	let p ='';
 
+	for(var i in contacts){
+ 		
+		 p+= `<div rel="wobble-horizontal" class="div button wobble-horizontal"> 
+			  <strong class="text-left text-info">Name : </strong>${contacts[i].name}
+			  <strong class="text-center ml-4 text-info">Email : </strong><a href="#">${contacts[i].email} </a>
+			  <abbr title="Click to show Full Info"><i onclick=modalshow("${i}") class="fa fa-user-o" data-toggle="modal" data-target="#exampleModal"></i></abbr>  
+			  
+			   <i class="fa fa-trash-o" onclick=trash("${i}") aria-hidden="true"></i>
+				</div>`
+			 }
+			 
+		document.getElementById('output').innerHTML= p;
+		if(contacts.length == 0){
+			document.getElementById('filter-div').style.display="none";
+		swal("All information is cleared, No data saved yet");
+	}
+}
 var contacts = [];
+
  document.addEventListener("DOMContentLoaded", function() {
    var name = document.querySelector("input[type=text]");
    var email = document.querySelector("input[type=email]");
@@ -137,7 +232,10 @@ var contacts = [];
 
 
 button.addEventListener("click", function(){
- 	
+	 
+	
+	if(name.value !== "" && email.value !== ""){
+
  	console.log(name.value);
  	var obj = { 
  		name:   name.value,
@@ -152,31 +250,13 @@ button.addEventListener("click", function(){
  	console.log(contacts);
 	console.log(obj);
 	 createBlock();
+	 document.getElementById('filter-div').style.display="block";
 
-	
+}else{
+	swal("Null Value !!!", "Please Enter All the required fields")
+} 
 
  });
- 
-
-function createBlock(){
-	let p ='';
-	for(var i in contacts){
- 		
-		 p+= `<div class="div"> 
-			  <strong class="text-left text-info">Name : </strong>${contacts[i].name}
-			  <strong class="text-center ml-4 text-info">Email : </strong><a href="#">${contacts[i].email} </a>
-			  <abbr title="Click to show Full Info"><i onclick=modalshow("${i}") class="fa fa-user-o" data-toggle="modal" data-target="#exampleModal"></i></abbr>  
-			  
-			   <i class="fa fa-trash-o" onclick=trash("${i}") aria-hidden="true"></i>
-			  </div>`
-		   }
-	  document.getElementById('output').innerHTML= p;
-}
-function trash(index){
-	contacts.splice(index,1);
-	createBlock();
-}
-
 
 
   });
