@@ -58,7 +58,7 @@
 		<div class="col-md-6  kk-4" id="output">
 		
 		</div>
-		<div class="col-md-1">
+		<!-- <div class="col-md-1">
 						<div class="dropdown show" style="display:none" id="filter-div">
 							<a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Filter
@@ -72,7 +72,7 @@
 								<a class="dropdown-item" onclick="myFilter(this)" href="#">Engineer</a>
 							</div>
 						</div>
-		</div>
+		</div> -->
 	</div>
 </div>
 
@@ -141,13 +141,19 @@
 function myFilter(txt){
 	
 	var text = txt.textContent.toLowerCase();
-	const filterItems = function(text) {
-  return contacts.filter(function(e1){
-	return	el.toLowerCase().indexOf(text.toLowerCase()) > -1;
-	}
-	)}
-	console.log(filterItems(text));
+ var arr = contacts.filter(function(){
+	 for( var i in contacts)
+	   return contacts[i].category.toLowerCase().indexOf(text) > -1;
+ })
+ console.log(arr);
 }
+
+// function myFilter(txt) {
+//     var value = txt.textContent.toLowerCase();
+//     $(".div").filter(function() {
+//       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+//     });
+//   }
 
 function savealert(){
 	swal({
@@ -214,8 +220,9 @@ function createBlock(){
 			 
 		document.getElementById('output').innerHTML= p;
 		if(contacts.length == 0){
+			swal("All information is cleared, No data saved yet");
 			document.getElementById('filter-div').style.display="none";
-		swal("All information is cleared, No data saved yet");
+		
 	}
 }
 var contacts = [];

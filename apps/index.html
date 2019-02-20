@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Kammy| </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/style.css">
+    
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="navbar-brand">
+            <img class="img-responsive" src="./images/artificial-intelligence.png">
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" onclick="devDetect()" href="#">Device Detector</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+          <div class="social-icons">
+                <i class="fa fa-twitter" style="color: #8bc34a"></i>
+                <i class="fa fa-facebook" style="color: blue" ></i>
+                <i class="fa fa-google" style="color: #f44336" ></i>
+                <i class="fa fa-instagram"  style="color: #0aafff"></i>
+                <i class="fa fa-quora" style="color: #47afa5;" ></i>
+                
+
+          </div>
+        </div>
+      </nav>
+       
+   <!-- two layers of Image-->
+<div class="bg" id="lightdiv"></div>
+<div class="lightning flashit"></div>
+
+<!-- This is just a logo-->
+<div id="logo">
+  <h1 id="storm">STORM<span>CLOUD</span></h1>
+</div>
+    
+
+
+<div class="container" id="device-detector" style="display:none;">
+    <div class="row text-center">
+        <div class="col-md-12">
+                <h1 class="text-center text-danger"> Device Detector</h1>
+        </div>
+        
+
+        <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="https://themerkle.com/wp-content/uploads/2017/07/shutterstock_540433660.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title">Device Detector</h5>
+                          <p class="card-text">Device Detection is technology that identifies what type of mobile devices are accessing an organization's website. That organization can run device detection in real time, or run it as post-processing data analysis</p>
+                          <a href="#" class="btn btn-primary" id="device-button">Detect</a>
+                        </div>
+                </div>
+        </div>
+        <div class="col-md-4">
+
+
+                <div class="card" style="width: 18rem;">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item" id="platform">Cras justo odio</li>
+                          <li class="list-group-item" id="platform-verson">Cras justo odio</li>
+                          <li class="list-group-item" id="vendor" >Dapibus ac facilisis in</li>
+                          <li class="list-group-item" id="memory" >Vestibulum at eros</li>
+                        </ul>
+                      </div>
+                      div class="card" style="width: 18rem;">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                      </ul>
+                    </div>
+                
+        </div>
+        
+
+    </div>
+</div>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>   
+</body>
+<script src="./js/main.js"></script>
+</html>
