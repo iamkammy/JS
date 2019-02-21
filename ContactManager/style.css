@@ -13,7 +13,12 @@ body{
     border-radius: 4px;
 	padding: 5px;
 	margin: 0px 0px 10px 0px;
-	position: relative;
+    position: relative;
+    transition: 0.4s;
+}
+.div:hover{
+    transform: translateX(-10px);
+    box-shadow: 0 0 8px #03A9F4;
 }
 .div>a{
 	text-decoration: none;

@@ -97,6 +97,45 @@
       margin-top: -1rem;
     }
   }
-  #storm{
-      color: transparent;
+  #storm {
+    color: transparent;
+    user-select: none;
+}
+  #device-detector{
+    
   }
+  #loader{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-bottom: 1px solid #2479bf;
+    animation: 1s linear infinite spin;
+    position: relative;
+    top: 135px;
+    left: 162px;
+  }
+  @keyframes spin{
+    from {transform:rotate(0deg);} to{transform:rotate(360deg);}
+  }
+ 
+#stopwatch{
+  background: #2d2d2d;
+  color: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+#stopwatch .stopwatch-text{
+  font-size: 5em;
+  font-family: monospace;
+}
+#stopwatch >ul{
+  margin: 0;
+  padding: 0;
+}
+#stopwatch >ul li{
+  list-style: none;
+  padding: 10px 0;
+}

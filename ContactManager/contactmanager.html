@@ -34,6 +34,7 @@
 				  </div>
 				  <div class="form-group">
 						<input type="date" class="form-control"  placeholder="Enter Date of Birth">
+						<!-- <input onfocus="(this.type='date')" class=" form-control js-form-control" placeholder="Enter Date of Birth"> -->
 					  </div>
 
 				  <div class="form-group">
@@ -58,7 +59,7 @@
 		<div class="col-md-6  kk-4" id="output">
 		
 		</div>
-		<!-- <div class="col-md-1">
+		<div class="col-md-1">
 						<div class="dropdown show" style="display:none" id="filter-div">
 							<a class="btn btn-info dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Filter
@@ -70,9 +71,10 @@
 								<a class="dropdown-item" onclick="myFilter(this)" href="#">Professional</a>
 								<a class="dropdown-item" onclick="myFilter(this)" href="#">AstroPhysicist</a>
 								<a class="dropdown-item" onclick="myFilter(this)" href="#">Engineer</a>
+								<a class="dropdown-item" onclick="myFilter(this)" href="#">All</a>
 							</div>
 						</div>
-		</div> -->
+		</div>
 	</div>
 </div>
 
@@ -139,21 +141,44 @@
 	
 }
 function myFilter(txt){
+
+ var text = txt.textContent;
+//  var temp = [];
+//  var isBlock= false;
+//  contacts.forEach(function(data){
 	
-	var text = txt.textContent.toLowerCase();
- var arr = contacts.filter(function(){
-	 for( var i in contacts)
-	   return contacts[i].category.toLowerCase().indexOf(text) > -1;
- })
- console.log(arr);
+// 	 if(data.category === text){
+// 		 temp.push(data);
+// 	 } else{
+// 		isBlock=true;
+// 	 }
+//  })
+
+//  if(isBlock == true){
+// 	createBlock(contacts);
+//  }
+// if( temp.length == 0){
+// 	swal("no record");
+// 	createBlock(contacts);
+// }
+
+
+ var darray = contacts.filter(function(t){
+	return (t.category == text)
+});
+if(text == 'All'){
+	createBlock(contacts);	
+}
+else if(darray.length == 0){
+swal("no record is found...");
+// createBlock(contacts);
+} 
+else{
+	createBlock(darray);
 }
 
-// function myFilter(txt) {
-//     var value = txt.textContent.toLowerCase();
-//     $(".div").filter(function() {
-//       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-//     });
-//   }
+
+}
 
 function savealert(){
 	swal({
@@ -173,7 +198,7 @@ function trash(index){
 .then((willDelete) => {
   if (willDelete) {
     contacts.splice(index,1);
-		createBlock();
+		createBlock(contacts);
     swal(`Poof! ${contacts[index].name} info has been deleted!`, {
       icon: "success",
     });
@@ -204,14 +229,14 @@ function getRandomColor() {
 }
 
 
-function createBlock(){
+function createBlock(arr){
 	let p ='';
 
-	for(var i in contacts){
+	for(var i in arr){
  		
-		 p+= `<div rel="wobble-horizontal" class="div button wobble-horizontal"> 
-			  <strong class="text-left text-info">Name : </strong>${contacts[i].name}
-			  <strong class="text-center ml-4 text-info">Email : </strong><a href="#">${contacts[i].email} </a>
+		 p+= `<div class="div button wobble-horizontal"> 
+			  <strong class="text-left text-info">Name : </strong>${arr[i].name}
+			  <strong class="text-center ml-4 text-info">Email : </strong><a href="#">${arr[i].email} </a>
 			  <abbr title="Click to show Full Info"><i onclick=modalshow("${i}") class="fa fa-user-o" data-toggle="modal" data-target="#exampleModal"></i></abbr>  
 			  
 			   <i class="fa fa-trash-o" onclick=trash("${i}") aria-hidden="true"></i>
@@ -219,7 +244,7 @@ function createBlock(){
 			 }
 			 
 		document.getElementById('output').innerHTML= p;
-		if(contacts.length == 0){
+		if(arr.length == 0){
 			swal("All information is cleared, No data saved yet");
 			document.getElementById('filter-div').style.display="none";
 		
@@ -256,7 +281,7 @@ button.addEventListener("click", function(){
  	contacts.push(obj);
  	console.log(contacts);
 	console.log(obj);
-	 createBlock();
+	 createBlock(contacts);
 	 document.getElementById('filter-div').style.display="block";
 
 }else{

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Kammy| </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -28,22 +29,20 @@
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#">Resources</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
+                My Apps
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" onclick="devDetect()" href="#">Device Detector</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" onclick="devDetect()" href="#">Device Detector <i class="fa fa-laptop" style="color:#03a9f4"></i></a>
+                <a class="dropdown-item" onclick= "stopwatch()" href="#">StopWatch <i class="fa fa-clock-o" style="color:#e91e63"></i></a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
+            
           </ul>
           <div class="social-icons">
                 <i class="fa fa-twitter" style="color: #8bc34a"></i>
@@ -67,15 +66,15 @@
 </div>
     
 
-
+<!-- device detector starts -->
 <div class="container" id="device-detector" style="display:none;">
     <div class="row text-center">
         <div class="col-md-12">
-                <h1 class="text-center text-danger"> Device Detector</h1>
+                <h1 class="text-center text-danger d"> Device Detector</h1>
         </div>
         
 
-        <div class="col-md-4">
+        <div class="col-md-4 input">
                 <div class="card" style="width: 18rem;">
                         <img class="card-img-top" src="https://themerkle.com/wp-content/uploads/2017/07/shutterstock_540433660.jpg" alt="Card image cap">
                         <div class="card-body">
@@ -85,15 +84,15 @@
                         </div>
                 </div>
         </div>
-        <div class="col-md-4">
-
+        <div id="loader" style="display:none"></div>
+        <div class="col-md-4 output" style="display:none">
 
                 <div class="card" style="width: 18rem;">
                         <ul class="list-group list-group-flush">
-                          <li class="list-group-item" id="platform">Cras justo odio</li>
-                          <li class="list-group-item" id="platform-verson">Cras justo odio</li>
-                          <li class="list-group-item" id="vendor" >Dapibus ac facilisis in</li>
-                          <li class="list-group-item" id="memory" >Vestibulum at eros</li>
+                          <li class="list-group-item" id="platform"></li>
+                          <li class="list-group-item" id="platform-verson"></li>
+                          <li class="list-group-item" id="vendor" ></li>
+                          <li class="list-group-item" id="memory" ></li>
                         </ul>
                       </div>
 
@@ -103,6 +102,38 @@
 
     </div>
 </div>
+<!-- device detector ends -->
+
+<!-- stopwatch starts -->
+ <div class="container-fluid" id="stopwatch" style="display:none">
+   <div class="row">
+     <div class="col-md-12">
+       <h1 class="text-center text-danger">Stopwatch</h1>
+     </div>
+
+        <div class="col-md-12">
+            <div class="stopwatch-text text-center">
+              00:00:00
+            </div>
+        </div>
+
+        <div class="col-md-8">
+        <div class="controls">
+          <button onclick="start()" class="btn btn-primary">Start</button>
+          <button onclick="pause()" class="btn btn-warning">pause</button>
+          <button onclick="stop()" class="btn btn-danger">stop</button>
+          <button onclick="restart()" class="btn btn-primary">Restart</button>
+          <button onclick="lap()" class="btn btn-info">Lap</button>
+          <button onclick="resetLaps()" class="btn btn-secondary">Reset Laps</button>
+
+        </div>
+    </div>
+          <div class="col-md-4">
+          <ol class="laps"></ol>
+          </div>
+   </div>
+ </div>
+<!-- stopwatch ends -->
 
 
 
