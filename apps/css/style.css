@@ -127,6 +127,9 @@
   justify-content: center;
   height: 100vh;
 }
+#stopwatch #h1stop{
+  color: #4CAF50!important;
+}
 #stopwatch .stopwatch-text{
   font-size: 5em;
   font-family: monospace;
@@ -138,4 +141,12 @@
 #stopwatch >ul li{
   list-style: none;
   padding: 10px 0;
+}
+#stopwatch .headtime {
+  position: relative;
+    float: right;
+    top: -41px;
+    color: beige;
+    display: inline-flex;
+    line-height: 1.86;
 }

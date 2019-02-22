@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz App/ Khan</title>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+	<link rel="icon" type="text/css" href="https://cdn.pixabay.com/photo/2018/08/31/11/17/quiz-3644414_960_720.png">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+<div id="quizContainer" class="container">
+	<div class="title">Computer Quiz </div>
+
+
+		<div id="question" class="question"> </div>
+
+<div id="loader" style="display: none;"></div>
+<label class="option"><input type="radio" name="option" value="1" /><span id="opt1"> </span> </label>
+<label class="option"><input type="radio" name="option" value="2" /><span id="opt2"> </span> </label>
+<label class="option"><input type="radio" name="option" value="3" /><span id="opt3"> </span> </label>
+<label class="option"><input type="radio" name="option" value="4" /><span id="opt4"> </span> </label>
+
+<button id="nextButton" class="next-btn" onclick="loadNextQustion();">Next Question</button>
+		
+
+</div>
+
+<div class="container result" id="result" style="display: none;"></div>
+</body>
+<script type="text/javascript" src="./js/question.js"></script>
+<script type="text/javascript" src="./js/quiz-script.js"></script>
+
+</html>

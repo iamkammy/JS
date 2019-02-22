@@ -108,7 +108,11 @@
  <div class="container-fluid" id="stopwatch" style="display:none">
    <div class="row">
      <div class="col-md-12">
-       <h1 class="text-center text-danger">Stopwatch</h1>
+       <h1 class="text-center mt-3" id="h1stop">Stopwatch</h1>
+       <div class="headtime">
+         <h4 class="text-center">Time</h4> 
+         <span class="ml-2" id="timespan">00:00</span>
+       </div>
      </div>
 
         <div class="col-md-12">
@@ -117,8 +121,8 @@
             </div>
         </div>
 
-        <div class="col-md-8">
-        <div class="controls">
+        <div class="col-md-12">
+        <div class="controls text-center mt-4">
           <button onclick="start()" class="btn btn-primary">Start</button>
           <button onclick="pause()" class="btn btn-warning">pause</button>
           <button onclick="stop()" class="btn btn-danger">stop</button>
@@ -129,7 +133,7 @@
         </div>
     </div>
           <div class="col-md-4">
-          <ol class="laps"></ol>
+          <ol class="laps pull-right"></ol>
           </div>
    </div>
  </div>

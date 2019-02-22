@@ -56,6 +56,17 @@ var timer;
 
 var stopwatchelement = document.querySelector('.stopwatch-text');
 var lapseContainer = document.querySelector('.laps');
+var timespan = document.querySelector('#timespan');
+
+setInterval(mytime, 1000);
+function mytime(){
+var date = new Date();
+// var hours = (date.getHours() < 10 ? "0"+date.getHours() :date.getHours() );
+// var mins = (date.getMinutes() < 10 ? "0"+date.getMinutes() :date.getMinutes() );
+// timespan.innerText = hours +":"+ mins;
+timespan.textContent = date.toLocaleTimeString();
+
+}
 
 function start(){
     if(!timer){
