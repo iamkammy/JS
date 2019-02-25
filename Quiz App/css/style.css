@@ -22,7 +22,7 @@ body{
 	text-align: center;
 	font-size: 36px;
 	text-transform: uppercase;
-	color: #08038C;
+	color: #2d638e;
 }
 
 .question{
@@ -95,4 +95,36 @@ body{
   }
   @keyframes spin{
     from {transform:rotate(0deg);} to{transform:rotate(360deg);}
+  }
+
+ div#timer {
+    display: inline;
+    float: right;
+    margin-top: 12px;
+    box-shadow: 0 0 12px #eee;
+    padding: 10px;
+    height: 75px;
+}
+ div#timer>h4{
+ 	color: #042535;
+    display: inline;
+    margin-top: 12px;
+ }
+  div#timer>p{
+  	text-align: center;
+  	color:#104012;
+  	font-size:18px;
+  }
+
+  .blink{
+  	text-decoration: blink;
+  	animation-name: blinker;
+  	animation-duration: 0.6s;
+  	animation-iteration-count: infinite;
+  	animation-timing-function: ease-in-out;
+  	animation-direction: alternate; 
+  }
+  @keyframes blinker{
+  	from{ opacity: 1.0; }
+  	to { opacity: 0.0; }
   }

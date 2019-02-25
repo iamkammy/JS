@@ -103,6 +103,7 @@ function stopTimer(){
 function getTimer(){
     return  (m < 10 ? "0"+m: m) + ":" + (s < 10 ? "0"+s: s)  + ":" + (ms < 10 ? "0"+ms : ms); 
 }
+
 function restart(){
     stop();
     start();

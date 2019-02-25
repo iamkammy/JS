@@ -5,11 +5,18 @@
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 	<link rel="icon" type="text/css" href="https://cdn.pixabay.com/photo/2018/08/31/11/17/quiz-3644414_960_720.png">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
+	<div id="timer">
+		<h4 >Countdown</h4>
+		<p id="timeshow"></p>
+	</div>
 <div id="quizContainer" class="container">
 	<div class="title">Computer Quiz </div>
 
@@ -28,8 +35,24 @@
 </div>
 
 <div class="container result" id="result" style="display: none;"></div>
+
+
+
+
+<!-- <div id="encrypt">
+	<form name="login" style="width: 400px;" method="POST" onsubmit="encryptForm();">
+		<input type="text" name="username" placeholder="username"><br><br>
+	<input type="password" name="password" placeholder="password"><br><br>
+	<button type="submit" >Submit</button>
+
+	</form>
+
+</div> -->
+
 </body>
 <script type="text/javascript" src="./js/question.js"></script>
 <script type="text/javascript" src="./js/quiz-script.js"></script>
+
+
 
 </html>
