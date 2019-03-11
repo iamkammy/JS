@@ -33,7 +33,7 @@
 					<input type="number" class="form-control"  placeholder="Enter Phone No">
 				  </div>
 				  <div class="form-group">
-						<input type="date" class="form-control"  placeholder="Enter Date of Birth">
+						<input id="dob" type="text" onfocus="(this.type = 'date')" class="form-control"  placeholder="Enter Date of Birth">
 						<!-- <input onfocus="(this.type='date')" class=" form-control js-form-control" placeholder="Enter Date of Birth"> -->
 					  </div>
 
@@ -79,8 +79,6 @@
 </div>
 
 
-
-
 <!-- modal area -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -114,8 +112,8 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" onclick="savealert()">Save</button>
+        <button type="button" id="mod-cancel" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="mod-f-suces" type="button" class="btn btn-success" onclick="savealert()">Save</button>
       </div>
     </div>
   </div>
@@ -161,32 +159,50 @@ function myFilter(txt){
 // 	swal("no record");
 // 	createBlock(contacts);
 // }
+var darray = contacts.filter(function(t){
+        return (t.category == text)
+      });
+      if(text == 'All'){
+        createBlock(contacts);	
+      }
+      else if(darray.length == 0){
+      swal("no record is found...");
+      // createBlock(contacts);
+      } 
+      else{
+        createBlock(darray);
+      }
 
-
- var darray = contacts.filter(function(t){
-	return (t.category == text)
-});
-if(text == 'All'){
-	createBlock(contacts);	
+ 
 }
-else if(darray.length == 0){
-swal("no record is found...");
-// createBlock(contacts);
-} 
-else{
-	createBlock(darray);
-}
 
-
-}
 
 function savealert(){
-	swal({
-  title: "Cool",
-  text: "Your Data saved Successfully",
-	icon: "success"
-   });
+	// swal({
+  // title: "Cool",
+  // text: "Your Data saved Successfully",
+	// icon: "success",
+  //  });
+
+
+	 swal({
+  title: 'Cool',
+	text: "Your Data saved Successfully",
+
+	icon: "success",
+  Buttons: true,
+
+	// timer: 2000,
+}).then(
+       function () { 
+				 var a = document.getElementById('exampleModal');
+				 a.style.display = "none";
+				 a.className = "modal fade";
+				 document.getElementsByClassName('modal-backdrop fade show')[0].style.display = 'none';
+			  },
+       function () { return false; });
 }
+
 function trash(index){
 	swal({
   title: "Are you sure?",
@@ -256,7 +272,7 @@ var contacts = [];
    var name = document.querySelector("input[type=text]");
    var email = document.querySelector("input[type=email]");
    var phone = document.querySelector("input[type=number]");
-   var dob = document.querySelector("input[type=date]");
+   var dob = document.getElementById('dob');
    var address = document.querySelector("textarea");
    var category = document.getElementById('category');
    var button = document.getElementById("btn1");

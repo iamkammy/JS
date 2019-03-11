@@ -57,3 +57,6 @@ body{
 #dropdownMenuLink{
 	background: linear-gradient(90deg, #4ebbec, #af2d59) !important;
 }
+.swal-overlay {
+    background-color: rgba(43, 165, 137, 0.45);
+  }
