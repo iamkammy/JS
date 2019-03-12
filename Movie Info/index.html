@@ -1,17 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Movie</title>
+	<title>Movie Info</title>
+<link rel="icon"  href="https://images.template.net/wp-content/uploads/2017/02/22185917/Movie-Camera-Icon.jpg">
+<link rel="stylesheet" type="text/css" href="./assets/bootstrap.min.css">
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<p>jshdj</p>
-<p>jshdj</p>
-<p>jshdj</p>
-<p>jshdj</p>
-<p>jshdj</p>
-<p>jshdj</p>
-<p>jshdj</p>
-<p>jshdj</p>
-<h2>welcoe  new</h2>
+<nav class="navbar navbar-default">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.html">MovieInfo</a>
+			<a class="navbar-brand" href="#">Explore</a>
+			<a class="navbar-brand" target="_blank" href="https://timesofindia.indiatimes.com/entertainment/hindi/movie-reviews">Bollywood</a>
+			<a class="navbar-brand" target="_blank" href="https://www.imdb.com/list/ls068010962/">Actors</a>
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+	<div class="jumbotron">
+		<h3 class="text-center">Search For Any Movie</h3>
+		<form id="searchForm">
+			<input type="text" class="form-control" id="searchText" placeholder="Search Movies ...">
+			<button type="button" onclick="getMovies($('#searchText').val());" class="btn btn-primary mx-auto d-block mt-2">Search</button>
+		</form>
+	</div>
+</div>
+
+<div class="container">
+	<div class="loader" style="display: none;"></div>
+	<div id="movies" class="row"></div>
+</div>
+
+
+<script
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
