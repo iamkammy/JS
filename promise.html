@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	//++++++++++    NORMAL +++++++++
+// function num(){
+//     setTimeout(        ()=>{
+//          return 6;       
+//         },200
+// )
+    
+// }
+
+//++++++++ CALLBACK+++++++++++++
+// function num(cb){
+//     setTimeout(        ()=>{
+//          cb(6);       
+//         },2000
+// )   
+// }
+
+//+++++++++++PROMISE ++++++++++
+function num(x){
+return new Promise((resolve,reject)=>{
+   setTimeout(()=>{
+         x==1?resolve(6):reject(-1);       
+        },2000
+)  
+})
+}
+//++++++++++    NORMAL +++++++++
+// function cal(){
+//     console.log(num()+2);
+// }
+
+//++++++++++    CALLBACK  +++++++++
+// function cal(){
+//     num((x)=>{
+//         console.log(x+2)
+//     })
+// }
+function cal(){
+    num(11).then(r=>console.log(r+2)).catch(e=>console.log(e+2))
+}
+cal()
+</script>
+</body>
+</html>
