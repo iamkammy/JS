@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OOPS</title>
+</head>
+<body>
+<h1>OOPS in Console</h1>
+</body>
+<script type="text/javascript">
+    // var obj = {
+//     name:"kamaran khan ",
+//     age:20,
+//     year:2019,
+//     hobbies: ["books", "news", "reading","cool","mango",6,8,34,3],
+//     fullname: function() { 
+//         return "MY Name Is" + this.name;
+//     }
+
+// };
+
+//  var arr = new Array(obj,obj,obj,obj,obj,obj,obj,obj,obj,obj,obj,obj,);
+
+//  var data = {
+//      name: "kamran",
+//      last:"khan",
+//      news: new Array(obj,obj,obj,obj,obj,obj,obj,obj,obj,obj,obj,obj,),
+//      play: [4,this.news,[this.news,this.news,this.news,this.news,this.news,this.news,this.news,this.news,this.news,this.news,this.news,this.news,this.news,],5,6,7,4,3,3,34,4,54,5,6,6,4,4,4,5,56,67],
+
+//  }
+
+//  console.log(data);
+// var s3 = 'hjddddddddddddddddd';
+// typeof(s3);
+
+//  tutorial start
+
+//Object literal
+// var book={
+//     title: 'physics',
+//     author: 'Issac',
+//     year: '1300',
+//     getSummary: function(){
+//         return `${this.title} was written by ${this.author} in ${this.year}`;
+//     }
+// }
+// var book6={
+//     title: 'Maths',
+//     author: 'Newton',
+//     year: '1360',
+//     getSummary: function(){
+//         return `${this.title} was written by ${this.author} in ${this.year}`;
+//     }
+// }
+
+// console.log(Object.keys(book6));
+// console.log(Object.values(book6));
+
+// constructor comes in
+
+// function Book(title, author, year) {
+//     this.title = title;
+//     this.author = author;
+//     this.year = year;
+//     this.getSummary = function() {
+//         return `${this.title} was written by ${this.author} in ${this.year}`;
+//     }
+// }
+// var booko = new Book('chemistry','mann',1223);
+// console.log(booko.getSummary());
+// var list = [];
+// for (var i = 0; i < 100; i++) {
+//     list[i] = new Book('Physics','Irodov',1992);
+// }
+
+
+//prototype methods
+
+// function Book(title, author, year) {
+//     this.title = title;
+//     this.author = author;
+//     this.year = year;
+   
+// }
+// //getsummary
+// Book.prototype.getSummary = function(){
+//      return `${this.title} was written by ${this.author} in ${this.year}`;
+// };
+// //getAge
+// Book.prototype.getAge = function(){
+//     const years = new Date().getFullYear() - this.year;
+//     return `${this.title} is ${years} years old`;
+// };
+// //Revise / cvhange
+// Book.prototype.revise = function(newyear){
+//     this.year = newyear;
+//     this.revised = true;
+// }
+// var booko = new Book('chemistry','mann',1723);
+// booko.revise('2018');
+// console.log(booko);
+
+//  **********************    Inheritence
+
+// function Book(title, author, year) {
+//     this.title = title;
+//     this.author = author;
+//     this.year = year;
+   
+// }
+// //getsummary
+// Book.prototype.getSummary = function(){
+//      return `${this.title} was written by ${this.author} in ${this.year}`;
+// };
+
+// //MAgazine constructor
+// function Magazine(title,author,year, month){
+//     Book.call(this, title,author,year);
+//     this.month= month;
+// }
+// //INherit Prototype
+// Magazine.prototype = Object.create(Book.prototype);
+
+// // INstantiate Magazine Object
+// var mag1 = new Magazine('Mag One', 'John Doe', '2018', 'jan');
+
+// console.log(mag1.getSummary());
+
+// // use magazine constructor
+// Magazine.prototype.constructor = Magazine;
+// console.log(mag1);
+
+// // Object Create
+
+// //Object Of protos
+// var bookProtos = {
+//     getSummary: function(){
+//           return `${this.title} was written by ${this.author} in ${this.year}`;
+//     },
+//     getAge: function(){
+//         const years = new Date().getFullYear() - this.year;
+//          return `${this.title} is ${years} years old`;
+//     }
+// }
+
+// // Create Object
+//  var book1 = Object.create(bookProtos);
+//  book1.title = 'kinetic';
+//  book1.author = "mike",
+//  book1.year = '2019';
+//  console.log(book1);
+//  // Or
+
+//  var book1 = Object.create(bookProtos,{
+//      title: {value: 'book one'},
+//      author: {value: 'noos'},
+//      year : {value : '2017'}
+//  })
+
+
+ //  ************   Classes  *****************
+
+//  class CheckBook{
+//      constructor(title, author, year){
+//          this.title = title;
+//          this.author = author;
+//          this.year = year;
+//      }
+//      getSummary(){
+//           return `${this.title} was written by ${this.author} in ${this.year}`;
+//      }
+//      getAge(){
+//           const years = new Date().getFullYear() - this.year;
+//          return `${this.title} is ${years} years old`;
+//      }
+
+//      revise(newyear){
+//          this.year = newyear;
+//     this.revised = true;
+//      }
+//      static topBookStore(){
+//         return 'My Name is khan and it is static methjod is called';
+//      }
+//  }
+
+//  // iNSTANTIATE AN OBJECT
+// //  var book1 = new CheckBook('maths', 'abid',1223);
+// //  console.log(book1);
+// //  book1.revise('2018');
+// // console.log(book1);
+
+// console.log(CheckBook.topBookStore());
+
+
+
+//     **************  Subclasses  **********
+
+class CheckBook{
+     constructor(title, author, year){
+         this.title = title;
+         this.author = author;
+         this.year = year;
+     }
+     getSummary(){
+          return `${this.title} was written by ${this.author} in ${this.year}`;
+     }
+     }
+
+     //Magazine subclass
+     class Magazine extends CheckBook{
+        constructor(title, author, year,month){
+            super(title,author,year);
+            this.month = month;
+        }
+     }
+     
+     //Instantiate MAgazine
+     const mag1 = new Magazine('ola', 'khan', '2019', 'Jan');
+     console.log(mag1.getSummary());
+
+var arr=[];
+for(var i=0; i<10000000000000000000000000000000; i++){
+    arr[i] = new Magazine('uber', 'john', '2004', 'Feb');
+}
+console.log(arr);
+</script>
+</html>
