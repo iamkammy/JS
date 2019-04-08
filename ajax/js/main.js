@@ -9,7 +9,8 @@ var container = $('div.container');
 					dataType: 'json',
 					cache: false,
 					success: function(data){
-						console.log(data);
+					
+						console.log("data mila" + data);
 
 					// 	$.each(data, function(index, item){
 					// 		console.log(item);
@@ -19,7 +20,7 @@ var container = $('div.container');
 						console.log(data)
 					}
 				});
-				alert("daat");
+				// alert("daat");
 	});
 
 });
