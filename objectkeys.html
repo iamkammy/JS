@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Object</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+<body>
+    <div id="main">
+        <form id="form">
+            <input type="text" placeholder="Enter Name"> </br> <br>
+            <input type="email" placeholder="Enter email"> </br> <br>
+            <input type="text" placeholder="Enter phone no"> </br> <br>
+            <input type="text" placeholder="Enter gao name"> </br> <br>
+            <button id="btn1" type="button">Get</button>
+        </form>
+
+        <div class="output">
+            
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+var inputs=[]; 
+document.addEventListener('DOMContentLoaded', function(){
+    var data = { name: 'kamran', email:'kamran.jmi12@gmail.com', phone: 9012324323, gao: 'delhi'};
+    document.getElementById('btn1').addEventListener('click', function(){
+        var arr = [Object.values(data)];
+         console.log(arr);
+       inputs = document.querySelectorAll('input');
+        inputs.forEach(function(input,index){
+             input.value=arr[0][index];
+        })
+    })
+})
+</script>
+</html>
