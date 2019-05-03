@@ -8,7 +8,6 @@ $('#searchForm').on('submit', (e)=>{
 });
 });
 
-
 function getMovies(searchText){
 	console.log(searchText);
 	axios.get(`http://www.omdbapi.com/?s=${searchText}&apikey=9e930b0`)
@@ -107,8 +106,6 @@ function getMovie(){
 			<a href="index.html" class="btn btn-secondary">Go Back To Search</a>
 
 			</div>
-
-
 
 			</div>
 		  `;

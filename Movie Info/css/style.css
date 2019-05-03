@@ -9,8 +9,10 @@
 	border: 2px solid black;
 	border-bottom: 1px solid #eee;
 	border-radius: 50%;
-	animation: 1s cubic-bezier(0.47, 0, 0.75, 0.72) infinite spin;
+	animation: 1s linear infinite spin;
 	margin: auto;
+      position: relative;
+    top: 50px;
 }
 @keyframes spin{
   from{
