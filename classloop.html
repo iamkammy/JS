@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.mystyle {
+  width: 300px;
+  height: 50px;
+  background-color: coral;
+  color: white;
+  font-size: 25px;
+}
+.node{
+font-size:34px;
+}
+
+</style>
+</head>
+<body>
+
+<p>Click the button to add the "mystyle" class to DIV.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+
+
+<div ider="myDIV">
+I am a DIV element
+</div>
+<ul>
+<li>
+<p class="myDIV">  hello iam kamran </p>
+</li>
+<li>
+<p class="myDIV">  hello iam kamran </p>
+</li>
+<li>
+<p class="myDIV">  hello iam kamran </p>
+</li>
+<li>
+<p class="myDIV">  hello iam kamran </p>
+</li>
+<li>
+<p class="myDIV">  hello iam kamran </p>
+</li>
+<li>
+<p class="myDIV">  hello iam kamran </p>
+</li>
+<li>
+<p class="myDIV">  hello iam kamran </p>
+</li>
+
+</ul>
+
+
+</body>
+
+<script>
+function myFunction() {
+const list = ['mystyle','node'];
+
+var s =  document.querySelectorAll('p.myDIV');
+ console.log(s);
+ s.forEach(function(elem){
+ 	elem.classList.add(...list);
+ })
+}
+</script>
+
+</html>
